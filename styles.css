@@ -6,3 +6,155 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+
+body {
+	--reading-progress: var(--scrollbar-active-thumb-bg);
+}
+
+.theme-light {
+	--reading-progress-background: var(--background-activated-tab-header-light);
+	--reading-progress-box-shadow: var(--shadow-activated-tab-header-light);
+	/* --progress-value-markdown: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+	--progress-value-pdf: linear-gradient(to right, #fa709a 0%, #fee140 100%); */
+
+
+}
+
+.theme-dark {
+	--reading-progress-background: var(--background-activated-tab-header-dark);
+	--reading-progress-box-shadow: var(--shadow-activated-tab-header-dark);
+	/* --progress-value-markdown: linear-gradient(to right,#005bea 0%, #00c6fb 100%);
+	--progress-value-pdf: linear-gradient(to right, #fa709a 0%, #fee140 100%); */
+}
+
+/* 进度条样式 */
+
+.reading-progress {
+	border-radius: 5px;
+	align-items: center;
+	display: flex;
+	height: 6px;
+	width: 172px;
+	position: relative;
+	justify-content: flex-start;
+	overflow: hidden;
+	background: var(--reading-progress-background);
+	box-shadow: var(--reading-progress-box-shadow);
+}
+
+.progress-border {
+	width: 172px;
+	height: 10px;
+	position: absolute;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border: 2px solid transparent;
+	z-index: 99;
+}
+
+/* 注册进度条颜色 */
+
+@property --progress-value-color1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #4facfe;
+}
+
+@property --progress-value-color2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #00f2fe;
+}
+
+/* 进度条样式 */
+
+.progress-value {
+	border-radius: 5px;
+	height: 6px;
+	width: 100%;
+	background-image: linear-gradient(to right, var(--progress-value-color1), var(--progress-value-color2));
+	opacity: 0.3;
+	position: relative;
+	transition: width 0.1s ease, opacity 0.18s ease, --progress-value-color1 0.18s ease, --progress-value-color2 0.18s ease;
+}
+
+.theme-dark .progress-value {
+	--progress-value-color1:#005bea;
+	--progress-value-color2: #00c6fb;
+}
+
+.theme-light .progress-value.markdown,
+.theme-light .progress-value.search {
+	--progress-value-color1:#4facfe;
+	--progress-value-color2: #00f2fe;
+}
+
+.theme-dark .progress-value.markdown,
+.theme-dark .progress-value.search {
+	--progress-value-color1:#005bea;
+	--progress-value-color2: #00c6fb;
+}
+
+.theme-light .progress-value.pdf {
+	--progress-value-color1:#fa709a;
+	--progress-value-color2: #fee140;
+}
+
+.theme-dark .progress-value.pdf {
+	--progress-value-color1:#fe5196;
+	--progress-value-color2: #f77062;
+}
+
+.theme-light .progress-value.bases {
+	--progress-value-color1: #6f86d6;
+	--progress-value-color2: #48c6ef;
+}
+
+.theme-dark .progress-value.bases {
+	--progress-value-color1:#6a11cb;
+	--progress-value-color2: #2575fc;
+}
+
+.progress-value.thino_view {
+	--progress-value-color1:#43d3ff;
+	--progress-value-color2: #baaaff;
+}
+
+.progress-value.markdown,
+.progress-value.pdf,
+.progress-value.search,
+.progress-value.bases,
+.progress-value.thino_view {
+	opacity: 1;
+}
+
+/* 全屏按钮样式 */
+
+.status-bar-item.maximize-minimize:hover,
+.status-bar-item.reading-progress-bar:hover,
+.status-bar-item.view-type:hover {
+	color: var(--status-bar-text-color);
+	background-color: var(--background-modifier-hover);
+}
+
+.status-bar-item.maximize-minimize.ban {
+	color: rgb(232, 17, 35);
+	user-select: none !important;
+	pointer-events: none !important;
+}
+
+/* 其他样式 */
+
+.status-bar .status-bar-item.plugin-reading-progress-desktop.maximize-minimize {
+	order: 1;
+}
+
+.status-bar .status-bar-item.plugin-reading-progress-desktop.reading-progress-bar {
+	order: 2;
+}
+
+.status-bar .status-bar-item.plugin-reading-progress-desktope.view-type {
+	order: 3;
+}

@@ -1,11 +1,9 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "reading-progress-desktop",
+	"name": "Reading Progress Desktop",
 	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
-	"isDesktopOnly": false
+	"description": "A progress bar for article browsing in the status bar.",
+	"author": "qian-shen",
+	"authorUrl": "https://github.com/qian-shen",
+	"isDesktopOnly": true
 }
